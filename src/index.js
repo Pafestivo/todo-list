@@ -1,3 +1,4 @@
 import './styles/styles.css';
-
-alert('test');
+import './styles/header.css';
+import './styles/main.css';
+import './styles/sidebar.css';

@@ -12,39 +12,64 @@
   <div id="header">
     <h1>To-Do List</h1>
   </div> <!--/header-->
+
   <div id="side-bar">
-    <h1>Projects</h1>
-    <h2>Project #1</h2>
-    <h2>Project #2</h2>
-    <h2>Project #3</h2>
-    <h2>Project #4</h2>
+    <h1>My Projects</h1>
+    <h2>House cleaning</h2>
+    <h2>Gardening</h2>
+    <h2>Meal preps for all</h2>
+    <h2>Kawabangaa</h2>
+    <h3><i class="fa-regular fa-plus new-project"></i>Add New</h3>
   </div> <!--/side-bar-->
+
   <div id="main">
-    <h1>Project #1</h1>
-    <p>Project #1's cool description</p>
-    <div class="task-div">
-      <p class="task-title">Task #1</p>
+    <div id="project-title">
+      <h1>Project #1</h1>
+    </div> <!--/project-title-->
+    <div class="task-div high-urg">
+      <div class="task-name">
+        <i class="btn fa-regular fa-circle"></i>
+        <i class="btn fa-regular fa-circle-check hidden"></i>
+        <p class="task-title">Task #1</p>
+      </div> <!--/task-name-->
       <p class="due-date">27/3/2023</p>
       <p class="priority">High</p>
-      <p class="btn del"><i class="fa-regular fa-pen-to-square"></i></p>
-      <p class="btn edit"><i class="fa-solid fa-trash"></i></p>
+      <div class="task-actions">
+        <i class="btn del fa-regular fa-pen-to-square"></i>
+        <i class="btn edit fa-solid fa-trash"></i>
+      </div> <!--/task-actions-->
     </div> <!--/task-div-->
 
-    <div class="task-div">
-      <p class="task-title">Task #2</p>
-      <p class="due-date">25/3/2023</p>
+    <div class="task-div medium-urg">
+      <div class="task-name">
+        <i class="btn fa-regular fa-circle"></i>
+        <i class="btn fa-regular fa-circle-check hidden"></i>
+        <p class="task-title">Task #1</p>
+      </div> <!--/task-name-->
+      <p class="due-date">27/3/2023</p>
       <p class="priority">Medium</p>
-      <p class="btn del"><i class="fa-regular fa-pen-to-square"></i></p>
-      <p class="btn edit"><i class="fa-solid fa-trash"></i></p>
+      <div class="task-actions">
+        <i class="btn del fa-regular fa-pen-to-square"></i>
+        <i class="btn edit fa-solid fa-trash"></i>
+      </div> <!--/task-actions-->
     </div> <!--/task-div-->
 
-    <div class="task-div">
-      <p class="task-title">Task #3</p>
-      <p class="due-date">12/3/2023</p>
+    <div class="task-div low-urg">
+      <div class="task-name">
+        <i class="btn fa-regular fa-circle"></i>
+        <i class="btn fa-regular fa-circle-check hidden"></i>
+        <p class="task-title">Task #1</p>
+      </div> <!--/task-name-->
+      <p class="due-date">27/3/2023</p>
       <p class="priority">Low</p>
-      <p class="btn del"><i class="fa-regular fa-pen-to-square"></i></p>
-      <p class="btn edit"><i class="fa-solid fa-trash"></i></p>
+      <div class="task-actions">
+        <i class="btn del fa-regular fa-pen-to-square"></i>
+        <i class="btn edit fa-solid fa-trash"></i>
+      </div> <!--/task-actions-->
     </div> <!--/task-div-->
+
+    <i class="btn fa-solid fa-plus new-task"></i>
+
   </div> <!--/main-->
 </body>
 </html>

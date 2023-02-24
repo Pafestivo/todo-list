@@ -1,0 +1,14 @@
+#header {
+  display: flex;
+  justify-content: left;
+  padding-left: 30px;
+  color: white;
+  align-items: center;
+  grid-area: 1 / 1 / 2 / 3;
+  background-color: var(--header);
+
+}
+
+#header h1 {
+  font-size: 50px;
+}
