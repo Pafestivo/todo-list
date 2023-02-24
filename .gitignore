@@ -3,3 +3,5 @@ node_modules
 .vscode
 .eslintignore
 .prettierignore
+.prettierrc.json
+.eslintrc.json
