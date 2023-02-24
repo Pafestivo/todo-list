@@ -17,6 +17,8 @@
 #side-bar h3 {
   font-size: 20px;
   margin: 2px 0 0 40px;
+  cursor: pointer;
+  width: max-content;
 }
 
 #side-bar h2::before{
@@ -30,14 +32,13 @@
   background-color: var(--text-color);
 }
 
-#side-bar h3 {
-  width: max-content;
-  cursor: pointer;
+#side-bar h3:hover,
+#side-bar h2:hover {
+  transform: scale(1.02);
+  border-bottom: 1px solid var(--header);
 }
 
 #side-bar h3:hover {
-  transform: scale(1.02);
-  border-bottom: 1px solid var(--header);
   color: var(--header);
 }
 
