@@ -1,15 +1,12 @@
-const newProject = document.getElementById('add-project');
+const newProject = document.getElementById('new-project');
 const projectForm = document.getElementById('project-form');
 
-function openProjectForm() {
-
-  newProject.classList.add('hidden');
-  projectForm.classList.remove('hidden');
+export default function switchForm() {
+  if(projectForm.classList.contains('hidden')) {
+    newProject.classList.add('hidden');
+    projectForm.classList.remove('hidden');
+  } else {
+    projectForm.classList.add('hidden');
+    newProject.classList.remove('hidden');
+  }
 }
-
-function addProject() {
-  projectForm.classList.add('hidden');
-  newProject.classList.add('hidden');
-}
-
-export { openProjectForm, addProject};
