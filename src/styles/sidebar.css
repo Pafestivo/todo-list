@@ -16,7 +16,7 @@
 #side-bar h2,
 #side-bar h3 {
   font-size: 20px;
-  margin: 2px 0 0 35px;
+  margin: 10px 0 0 35px;
   cursor: pointer;
   width: max-content;
   border-bottom: 2px solid transparent;
@@ -45,4 +45,41 @@
 .new-project {
   font-size: 15px;
   margin-right: 4px;
+}
+
+/* Form */
+
+form {
+  margin: 10px 0 0 35px;
+  width: max-content;
+}
+
+form input[type=text] {
+  font-family: 'Roboto', 'serif';
+  font-size: 20px;
+  font-weight: bold;
+  height: 30px;
+  width: 220px;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  background-color: transparent;
+  outline: none;
+}
+
+form input[type=submit] {
+  font-family: 'Roboto', 'serif';
+  font-size: 25px;
+  font-weight: bold;
+  border: none;
+  background-color: var(--header);
+  outline: none;
+  cursor: pointer;
+  color: white;
+  padding: 2.5px 10px;
+  border-radius: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+form input[type=submit]:hover {
+  transform: rotate(180deg);
 }

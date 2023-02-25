@@ -37,10 +37,6 @@
   border-left: 8px solid green;
 }
 
-.hidden {
-  display: none;
-}
-
 .btn {
   cursor: pointer;
 }
