@@ -19,6 +19,7 @@
   margin: 2px 0 0 40px;
   cursor: pointer;
   width: max-content;
+  border-bottom: 2px solid transparent;
 }
 
 #side-bar h2::before{
@@ -34,8 +35,7 @@
 
 #side-bar h3:hover,
 #side-bar h2:hover {
-  transform: scale(1.02);
-  border-bottom: 1px solid var(--header);
+  border-bottom: 2px solid var(--header);
 }
 
 #side-bar h3:hover {
