@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/e2364af56b.js" crossorigin="anonymous"></script>
-  <script src="./main.js"></script>
+  <script src="./main.js" defer></script>
   <title>To-Do List</title>
 </head>
 <body>
@@ -15,11 +15,14 @@
 
   <div id="side-bar">
     <h1>My Projects</h1>
-    <h2>House cleaning</h2>
-    <h2>Gardening</h2>
-    <h2>Meal preps for all</h2>
-    <h2>Kawabangaa</h2>
-    <h3><i class="fa-regular fa-plus new-project"></i>Add New</h3>
+    <div id="projects-list">
+      <h2>A very cool project</h2>
+    </div> <!--/project-list-->
+    <form id="project-form" action="" class="hidden">
+      <input type="text" maxlength="20">
+      <input type="submit" value="+">
+    </form>
+    <h3 id="add-project"><i class="fa-regular fa-plus new-project"></i>Add New</h3>
   </div> <!--/side-bar-->
 
   <div id="main">
