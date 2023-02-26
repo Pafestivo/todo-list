@@ -2,7 +2,8 @@ import './styles/styles.css';
 import './styles/header.css';
 import './styles/main.css';
 import './styles/sidebar.css';
-import { switchForm, pushProj, refreshList } from './scripts/addProject';
+import { switchForm, pushProj } from './scripts/addProject';
+import { refreshList } from './scripts/refreshList';
 
 // refresh project list on page load
 refreshList();
