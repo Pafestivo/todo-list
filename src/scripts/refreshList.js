@@ -1,5 +1,7 @@
 import { projects } from "./projectsArray";
 
+let selectedProject = projects[0];
+
 function refreshList() {
   const projectList = document.getElementById('projects-list');
   // refresh the array to display the new list of projects.
@@ -21,13 +23,12 @@ function clickToGetName() {
   const projTitleHeader = document.getElementById('project-title-h');
   const allProjects = document.querySelectorAll('div#projects-list > h2')
 
-  console.log(allProjects);
-
   allProjects.forEach((project) => {
     project.addEventListener('click', () => {
       projTitleHeader.textContent = project.textContent;
+      selectedProject = projects.find((selected) => selected.title === project.textContent)
     });
   })
 }
 
-export { refreshList };
+export { refreshList, selectedProject };
