@@ -2,7 +2,7 @@ import './styles/styles.css';
 import './styles/header.css';
 import './styles/main.css';
 import './styles/sidebar.css';
-import { switchAddProjectForm, pushProj } from './scripts/addProject';
+import { openAddProjectForm, closeAddProjectForm, pushProj } from './scripts/addProject';
 import { refreshList } from './scripts/refreshList';
 import { openRenameForm, closeRenameForm, applyRename } from './scripts/mainArea';
 
@@ -17,16 +17,21 @@ const headerTitle = document.getElementById('project-title-h'); // the project t
 const saveName = document.getElementById('save-name'); // the save button to change the name
 const renameInput = document.getElementById('change-name-input'); // the input to change project name
 
-
+document.addEventListener('keydown', (e) => { // close forms when clicking escape
+  if(e.key === "Escape") {
+    closeAddProjectForm();
+    closeRenameForm();
+  }
+});
 newProject.addEventListener('click', () => {
-  switchAddProjectForm();
+  openAddProjectForm();
   newProjectInput.focus();
 });
 submitProject.addEventListener('click', (e) => {
   e.preventDefault();
   pushProj();
   newProjectInput.value = "";
-  switchAddProjectForm();
+  closeAddProjectForm();
 });
 headerTitle.addEventListener('click', () => {
   openRenameForm();
