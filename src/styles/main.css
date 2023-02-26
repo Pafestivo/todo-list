@@ -2,7 +2,7 @@
   grid-area: 2 / 2 / 3 / 3;
 }
 
-#project-title {
+#project-header {
   display: flex;
   flex-direction: column;
   padding: 15px 30px;
@@ -10,7 +10,7 @@
   row-gap: 7px;
 }
 
-#project-title h1 {
+#project-header h1 {
   font-size: 50px;
   text-align: center;
   padding-bottom: 10px;

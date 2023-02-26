@@ -11,6 +11,8 @@ refreshList();
 const newProject = document.getElementById('new-project'); // add new button
 const submitProject = document.getElementById('submit-project'); // the + button to add project
 const newProjectInput = document.getElementById('new-project-input'); // the input for project name
+
+
 newProject.addEventListener('click', () => {
   switchForm();
   newProjectInput.focus();
@@ -21,3 +23,4 @@ submitProject.addEventListener('click', (e) => {
   newProjectInput.value = "";
   switchForm();
 });
+

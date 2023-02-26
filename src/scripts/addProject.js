@@ -1,4 +1,5 @@
 import { projects } from "./projectsArray";
+import { clickToGetName } from "./mainArea";
 
 const newProject = document.getElementById('new-project');
 const projectForm = document.getElementById('project-form');
@@ -32,7 +33,11 @@ function refreshList() {
   projects.forEach((project) => {
     const projTitle = document.createElement('h2');
     projTitle.textContent = project.title;
+
     projectList.appendChild(projTitle);
+
+    // add the event listener to each newly created h2 element
+    clickToGetName();
   })
 }
 
