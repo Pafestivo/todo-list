@@ -1,5 +1,5 @@
 export const projects = [
   {
-    title: "My First Project"
+    title: "My First Project",
   }
 ]

@@ -1,6 +1,7 @@
 import { projects } from "./projectsArray";
 
 let selectedProject = projects[0];
+const projTitleHeader = document.getElementById('project-title-h');
 
 function refreshList() {
   const projectList = document.getElementById('projects-list');
@@ -14,19 +15,20 @@ function refreshList() {
 
     projectList.appendChild(projTitle);
 
-    // add the event listener to each newly created h2 element
-    clickToGetName();
   })
+  projTitleHeader.textContent = selectedProject.title;
+  // add the event listener to each newly created h2 element
+  clickToGetName();
 }
 
 function clickToGetName() {
-  const projTitleHeader = document.getElementById('project-title-h');
   const allProjects = document.querySelectorAll('div#projects-list > h2')
 
   allProjects.forEach((project) => {
     project.addEventListener('click', () => {
       projTitleHeader.textContent = project.textContent;
       selectedProject = projects.find((selected) => selected.title === project.textContent)
+      console.log(selectedProject);
     });
   })
 }
