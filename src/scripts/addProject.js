@@ -1,10 +1,7 @@
+import { projects } from "./projectsArray";
+
 const newProject = document.getElementById('new-project');
 const projectForm = document.getElementById('project-form');
-const projects = [
-  {
-    title: "My First Project"
-  }
-]
 
 function switchForm() {
   if(projectForm.classList.contains('hidden')) {
