@@ -7,7 +7,6 @@ const projectForm = document.getElementById('project-form');
 function openAddProjectForm() {
   newProject.classList.add('hidden');
   projectForm.classList.remove('hidden');
-
 }
 
 function closeAddProjectForm() {
