@@ -1,7 +1,7 @@
 import { projects } from "./projectsArray";
 import { refreshList } from "./refreshList";
 
-function switchForm() {
+function switchAddProjectForm() {
   const newProject = document.getElementById('new-project');
   const projectForm = document.getElementById('project-form');
 
@@ -24,7 +24,7 @@ function pushProj() {
   refreshList();
 }
 
-export { switchForm, pushProj }
+export { switchAddProjectForm, pushProj }
 
 
 

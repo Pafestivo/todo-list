@@ -50,12 +50,12 @@
 
 /* Form */
 
-form {
+#side-bar form {
   margin: 10px 0 0 35px;
   width: max-content;
 }
 
-form input[type=text] {
+#side-bar form input[type=text] {
   font-family: 'Roboto', 'serif';
   font-size: 20px;
   font-weight: bold;
@@ -67,7 +67,7 @@ form input[type=text] {
   outline: none;
 }
 
-form input[type=submit] {
+#side-bar form input[type=submit] {
   font-family: 'Roboto', 'serif';
   font-size: 25px;
   font-weight: bold;
@@ -81,6 +81,6 @@ form input[type=submit] {
   transition: all 0.2s ease-in-out;
 }
 
-form input[type=submit]:hover {
+#side-bar form input[type=submit]:hover {
   transform: rotate(180deg);
 }
