@@ -1,10 +1,10 @@
 import { projects } from "./projectsArray";
 import { refreshList } from "./refreshList";
 
-const newProject = document.getElementById('new-project');
-const projectForm = document.getElementById('project-form');
-
 function switchForm() {
+  const newProject = document.getElementById('new-project');
+  const projectForm = document.getElementById('project-form');
+
   if(projectForm.classList.contains('hidden')) {
     newProject.classList.add('hidden');
     projectForm.classList.remove('hidden');
