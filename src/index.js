@@ -27,6 +27,11 @@ newProject.addEventListener('click', () => {
   openAddProjectForm();
   newProjectInput.focus();
 });
+newProjectInput.addEventListener('focusout', () => {
+  setTimeout(() => {
+    closeAddProjectForm();
+  }, 100);
+});
 submitProject.addEventListener('click', (e) => {
   e.preventDefault();
   pushProj();
@@ -38,7 +43,11 @@ headerTitle.addEventListener('click', () => {
   renameInput.focus();
   renameInput.value = headerTitle.textContent;
 });
-renameInput.addEventListener('focusout', closeRenameForm);
+renameInput.addEventListener('focusout', () => {
+  setTimeout(() => {
+    closeRenameForm();
+  }, 100);
+});
 saveName.addEventListener('click', (e) => {
   e.preventDefault();
   applyRename();
