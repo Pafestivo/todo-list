@@ -30,7 +30,7 @@ newProject.addEventListener('click', () => {
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
     closeAddProjectForm();
-  }, 200);
+  }, 150);
 });
 submitProject.addEventListener('click', (e) => {
   e.preventDefault();
@@ -46,7 +46,7 @@ headerTitle.addEventListener('click', () => {
 renameInput.addEventListener('focusout', () => {
   setTimeout(() => {
     closeRenameForm();
-  }, 200);
+  }, 150);
 });
 saveName.addEventListener('click', (e) => {
   e.preventDefault();
