@@ -17,11 +17,15 @@ function closeAddProjectForm() {
 // when + is clicked, push the new project name to the object arrays.
 function pushProj() {
   const newProjectInput = document.getElementById('new-project-input');
-  const project = {
-    title: newProjectInput.value
+  const projectName = newProjectInput.value.trim();
+  if(projectName !== '') {
+    const project = {
+      title: newProjectInput.value
+    }
+    projects.push(project);
+    refreshList();
   }
-  projects.push(project);
-  refreshList();
+
 }
 
 export { openAddProjectForm, closeAddProjectForm, pushProj }

@@ -17,8 +17,10 @@ function applyRename() {
   const renameInput = document.getElementById('change-name-input'); // the input to change project name
   const headerTitle = document.getElementById('project-title-h'); // the project title on main area
 
-  selectedProject.title = renameInput.value;
-  headerTitle.textContent = selectedProject.title;
+  if(renameInput.value.trim() !== '') {
+    selectedProject.title = renameInput.value;
+    headerTitle.textContent = selectedProject.title;
+  }
 }
 
 export { openRenameForm, closeRenameForm, applyRename };
