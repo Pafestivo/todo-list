@@ -17,7 +17,7 @@ const closeTaskForm = document.getElementById('close-form');
 const submitTask = document.getElementById('submit-task');
 const deleteFormBtn = document.getElementById('delete-project');
 
-
+updateProjectDetails();
 
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
