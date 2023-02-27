@@ -4,9 +4,18 @@ const renameForm = document.getElementById('change-project-name');
 const title = document.getElementById('project-title-h');
 const AddTaskOverlay = document.getElementById('add-task-overlay');
 
+// input fields
+const newProjectInput = document.getElementById('new-project-input');
+const renameInput = document.getElementById('change-name-input');
+const taskDateField = document.getElementById('due-date');
+const addTaskInputs = document.querySelectorAll('#add-task-form > input, textarea, select');
+
+
 function openAddProjectForm() {
   newProject.classList.add('hidden');
   projectForm.classList.remove('hidden');
+  newProjectInput.value = "";
+  newProjectInput.focus();
 }
 
 function closeAddProjectForm() {
@@ -17,6 +26,8 @@ function closeAddProjectForm() {
 function openRenameForm() {
   renameForm.classList.remove('hidden')
   title.classList.add('hidden')
+  renameInput.focus();
+  renameInput.value = title.textContent;
 }
 
 function closeRenameForm() {
@@ -26,6 +37,9 @@ function closeRenameForm() {
 
 function openAddTaskForm() {
   AddTaskOverlay.classList.remove('hidden')
+  addTaskInputs.forEach((textField) => {
+    textField.value = "";
+  })
 }
 
 function closeAddTaskForm() {

@@ -15,14 +15,9 @@ const renameInput = document.getElementById('change-name-input');
 const addTaskBtn = document.getElementById('add-task-btn');
 const closeTaskForm = document.getElementById('close-form');
 const submitTask = document.getElementById('submit-task');
-const taskDateField = document.getElementById('due-date');
 
 
-newProject.addEventListener('click', () => {
-  openAddProjectForm();
-  newProjectInput.value = "";
-  newProjectInput.focus();
-});
+newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
     closeAddProjectForm();
@@ -38,19 +33,12 @@ submitProject.addEventListener('click', (e) => {
   closeAddProjectForm();
   addProject();
 });
-title.addEventListener('click', () => {
-  openRenameForm();
-  renameInput.focus();
-  renameInput.value = title.textContent;
-});
+title.addEventListener('click', openRenameForm);
 saveName.addEventListener('click', (e) => {
   e.preventDefault();
   closeRenameForm();
 })
-addTaskBtn.addEventListener('click', () => {
-  taskDateField.value = "";
-  openAddTaskForm();
-});
+addTaskBtn.addEventListener('click', openAddTaskForm);
 closeTaskForm.addEventListener('click', closeAddTaskForm);
 submitTask.addEventListener('click', (e) => {
   e.preventDefault();
