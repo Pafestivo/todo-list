@@ -26,9 +26,14 @@ function changeActiveProject(activeProject) {
 }
 
 function updateProjectDetails() {
-  const projectTitle = document.getElementById(activatedProject.id);
-  projectTitle.textContent = activatedProject.name;
+  const activatedProjectTitle = document.getElementById(activatedProject.id);
+  activatedProjectTitle.textContent = activatedProject.name;
   title.textContent = activatedProject.name;
+}
+
+function deleteProject() {
+  const activatedProjectTitle = document.getElementById(activatedProject.id);
+  activatedProjectTitle.remove();
 }
 
 function applyRename() {
@@ -36,4 +41,4 @@ function applyRename() {
   activatedProject.setName(renameInput.value);
 }
 
-export { addProject, updateProjectDetails, applyRename }
+export { addProject, updateProjectDetails, deleteProject, applyRename }
