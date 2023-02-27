@@ -7,8 +7,10 @@ const AddTaskOverlay = document.getElementById('add-task-overlay');
 // input fields
 const newProjectInput = document.getElementById('new-project-input');
 const renameInput = document.getElementById('change-name-input');
+const taskTitle = document.getElementById('task-title');
+const taskDescription = document.getElementById('task-description');
 const taskDateField = document.getElementById('due-date');
-const addTaskInputs = document.querySelectorAll('#add-task-form > input, textarea, select');
+const taskUrgency = document.getElementById('urgency');
 
 
 function openAddProjectForm() {
@@ -37,9 +39,10 @@ function closeRenameForm() {
 
 function openAddTaskForm() {
   AddTaskOverlay.classList.remove('hidden')
-  addTaskInputs.forEach((textField) => {
-    textField.value = "";
-  })
+  taskTitle.value = "";
+  taskDescription.value = "";
+  taskDateField.value = "";
+  taskUrgency.value = "Low";
 }
 
 function closeAddTaskForm() {
