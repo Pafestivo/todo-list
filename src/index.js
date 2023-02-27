@@ -4,6 +4,7 @@ import './styles/sidebar.css';
 import './styles/styles.css';
 import Project from './scripts/createProject';
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm } from './scripts/switchForms';
+import addProject from './scripts/sideBar';
 
 const newProject = document.getElementById('new-project'); // new project button in sidebar
 const submitProject = document.getElementById('submit-project'); // submit project button in sidebar
@@ -15,6 +16,7 @@ const renameInput = document.getElementById('change-name-input'); // the rename 
 
 newProject.addEventListener('click', () => {
   openAddProjectForm();
+  newProjectInput.value = "";
   newProjectInput.focus();
 });
 newProjectInput.addEventListener('focusout', () => {
@@ -30,7 +32,7 @@ renameInput.addEventListener('focusout', () => {
 submitProject.addEventListener('click', (e) => {
   e.preventDefault();
   closeAddProjectForm();
-  newProjectInput.value = "";
+  addProject();
 });
 title.addEventListener('click', () => {
   openRenameForm();
