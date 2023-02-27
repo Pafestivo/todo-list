@@ -1,30 +1,32 @@
 import Todo from "./createTodo";
 
-function Project(name) {
+export default function Project(name) {
 
   const id = crypto.randomUUID()
-  const todos = [];
+  let todos = [];
   return {
     get name() {
       return name;
     },
-
+    get id() {
+      return id;
+    },
     getTodos() {
       return todos;
     },
-    getTodo(id) {
-      for(i = todos.length; i < 0; i--) {
-        if(todos[i].id === id) {
+    getTodo(todoId) {
+      for(let i = todos.length; i >= 0; i--) {
+        if(todos[i].id === todoId) {
           return todos[i];
-        } else console.log('no todo was found');
+        } 
       }
     },
-    addTodo(name, description, priority, dueDate) {
-     const todo = new Todo(name, description, priority, dueDate);
+    addTodo(todoName, description, priority, dueDate) {
+     const todo = new Todo(todoName, description, priority, dueDate);
      todos.push(todo);
     },
-    removeTodo(id) {
-      todos = todos.filter((todo) => todo.id !== id);
+    removeTodo(todoId) {
+      todos = todos.filter((todo) => todo.id !== todoId);
     },
     clearTodos() {
       todos = [];
