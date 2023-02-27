@@ -23,6 +23,7 @@
         "no-plusplus": "off",
         "prefer-const": "off",
         "grouped-accessor-pairs": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "no-alert": "off"
     }
 }

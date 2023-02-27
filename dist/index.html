@@ -32,47 +32,11 @@
         <input id="save-name" type="submit" value="Save">
       </form>
     </div> <!--/project-header-->
-    <div class="task-div high-urg">
-      <div class="task-name">
-        <i class="btn fa-regular fa-circle"></i>
-        <i class="btn fa-regular fa-circle-check hidden"></i>
-        <p class="task-title">Do the dishes</p>
-      </div> <!--/task-name-->
-      <p class="due-date">27/3/2023</p>
-      <p class="priority">High</p>
-      <div class="task-actions">
-        <i class="btn del fa-regular fa-pen-to-square"></i>
-        <i class="btn edit fa-solid fa-trash"></i>
-      </div> <!--/task-actions-->
-    </div> <!--/task-div-->
 
-    <div class="task-div medium-urg">
-      <div class="task-name">
-        <i class="btn fa-regular fa-circle"></i>
-        <i class="btn fa-regular fa-circle-check hidden"></i>
-        <p class="task-title">Sweep under the sofa</p>
-      </div> <!--/task-name-->
-      <p class="due-date">27/3/2023</p>
-      <p class="priority">Medium</p>
-      <div class="task-actions">
-        <i class="btn del fa-regular fa-pen-to-square"></i>
-        <i class="btn edit fa-solid fa-trash"></i>
-      </div> <!--/task-actions-->
-    </div> <!--/task-div-->
+    <div id="todos-container">
+  
+    </div> <!--/todos-container-->
 
-    <div class="task-div low-urg">
-      <div class="task-name">
-        <i class="btn fa-regular fa-circle"></i>
-        <i class="btn fa-regular fa-circle-check hidden"></i>
-        <p class="task-title">clean the bathroom</p>
-      </div> <!--/task-name-->
-      <p class="due-date">27/3/2023</p>
-      <p class="priority">Low</p>
-      <div class="task-actions">
-        <i class="btn del fa-regular fa-pen-to-square"></i>
-        <i class="btn edit fa-solid fa-trash"></i>
-      </div> <!--/task-actions-->
-    </div> <!--/task-div-->
 
     <div id="project-actions">
       <i id="add-task-btn" class="btn fa-solid fa-plus new-task hidden"></i>
@@ -87,12 +51,12 @@
       <h1>Add Task</h1>
      <label>
       Title:
-      <input id="task-title" type="text" maxlength="20">
+      <input id="task-title" type="text" maxlength="20" autocomplete="off">
      </label>
 
      <label>
       Description:
-      <textarea id="task-description" rows ="5" cols ="60" maxlength="100"></textarea>
+      <textarea id="task-description" rows ="5" cols ="60" maxlength="100" autocomplete="off"></textarea>
      </label>
 
      <label>

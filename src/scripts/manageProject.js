@@ -1,6 +1,6 @@
 import Project from "./createProject";
 
-let activatedProject = {name: 'No Project Selected'}
+let activatedProject = {name: 'No Project Selected', id: 'Default ID'}
 
 
 
@@ -29,6 +29,7 @@ function addProject() {
 function changeActiveProject(activeProject) {
   activatedProject = activeProject;
   title.textContent = activatedProject.name;
+  refreshToDos();
 }
 
 function updateProjectDetails() {
@@ -49,8 +50,79 @@ function deleteProject() {
 }
 
 function applyRename() {
-  const renameInput = document.getElementById('change-name-input');
-  activatedProject.setName(renameInput.value);
+  if(activatedProject.id !== 'Default ID') {
+    const renameInput = document.getElementById('change-name-input');
+    activatedProject.setName(renameInput.value);
+    return true;
+  }
 }
 
-export { addProject, updateProjectDetails, deleteProject, applyRename }
+// todos
+
+function addTodo() {
+  const taskTitle = document.getElementById('task-title');
+  const taskDescription = document.getElementById('task-description');
+  const taskUrgency = document.getElementById('urgency');
+  const taskDateField = document.getElementById('due-date');
+
+  if(taskTitle.value !== "" &&
+  taskDescription.value !== "" && 
+  taskDateField.value !== "") // if no field is empty
+  {
+    // create todo for the current project
+    activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
+    refreshToDos();
+  } else alert("Form wasn't filled properly - No task was added");
+}
+
+function deleteTodo(id) {
+  activatedProject.removeTodo(id);
+  refreshToDos();
+}
+
+function refreshToDos() {
+  const todosContainer = document.getElementById('todos-container');
+  todosContainer.textContent = "";
+
+  activatedProject.getTodos().forEach(todo => {
+    const todoContainer = document.createElement('div');
+    todoContainer.classList.add('task-div', `${todo.priority.toLowerCase()}-urg`);
+    todoContainer.id = todo.id;
+
+    const taskName = document.createElement('div');
+    taskName.classList.add('task-name');
+
+    const emptyCircle = document.createElement('i');
+    const checkedCircle = document.createElement('i');
+    const todoTitle = document.createElement('p');
+    emptyCircle.classList.add('btn', 'fa-regular', 'fa-circle');
+    checkedCircle.classList.add('btn', 'fa-regular', 'fa-circle', 'hidden');
+    todoTitle.classList.add('task-title');
+    todoTitle.textContent = todo.name;
+    taskName.append(emptyCircle, checkedCircle, todoTitle);
+
+    const dueDate = document.createElement('p');
+    dueDate.classList.add('due-date');
+    dueDate.textContent = todo.dueDate.split("-").reverse().join("-");// reverse the date string
+
+    const priority = document.createElement('p');
+    priority.classList.add('priority');
+    priority.textContent = todo.priority;
+
+    const todoActions = document.createElement('div');
+    const editBtn = document.createElement('i');
+    const deleteBtn = document.createElement('i');
+    todoActions.classList.add('task-actions');
+    editBtn.classList.add('btn', 'fa-regular', 'fa-pen-to-square');
+    deleteBtn.classList.add('btn', 'fa-solid', 'fa-trash');
+    deleteBtn.addEventListener('click', () => {
+      deleteTodo(todo.id);
+    })
+    todoActions.append(editBtn, deleteBtn);
+
+    todoContainer.append(taskName, dueDate, priority, todoActions);
+    todosContainer.appendChild(todoContainer);
+  });
+}
+
+export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo }
