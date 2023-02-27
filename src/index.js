@@ -15,7 +15,7 @@ const renameInput = document.getElementById('change-name-input');
 const addTaskBtn = document.getElementById('add-task-btn');
 const closeTaskForm = document.getElementById('close-form');
 const submitTask = document.getElementById('submit-task');
-const deleteBtn = document.getElementById('delete-project');
+const deleteFormBtn = document.getElementById('delete-project');
 
 
 
@@ -48,4 +48,4 @@ submitTask.addEventListener('click', (e) => {
   e.preventDefault();
   closeAddTaskForm();
 })
-deleteBtn.addEventListener('click', deleteProject)
+deleteFormBtn.addEventListener('click', deleteProject)
