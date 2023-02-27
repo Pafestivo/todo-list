@@ -1,6 +1,6 @@
 export default function Todo(name, description, priority, dueDate) {
 
-  const id = crypto.randomUUID;
+  const id = crypto.randomUUID();
   let done = false;
   return {
     get id() {
