@@ -4,7 +4,7 @@ import './styles/sidebar.css';
 import './styles/styles.css';
 import Project from './scripts/createProject';
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm } from './scripts/switchForms';
-import addProject from './scripts/sideBar';
+import addProject from './scripts/addProject';
 
 const newProject = document.getElementById('new-project'); // new project button in sidebar
 const submitProject = document.getElementById('submit-project'); // submit project button in sidebar
