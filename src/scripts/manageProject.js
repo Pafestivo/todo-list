@@ -1,6 +1,11 @@
 import Project from "./createProject";
 
-export default function addProject() {
+let activatedProject = {};
+
+const title = document.getElementById('project-title-h');
+
+
+function addProject() {
   const newProjectInput = document.getElementById('new-project-input');
   const projectList = document.getElementById('projects-list');
   const projectName = newProjectInput.value;
@@ -8,6 +13,7 @@ export default function addProject() {
   const newProject = new Project(projectName);
   const projectTitle = document.createElement('h2');
   projectTitle.textContent = newProject.name;
+  projectTitle.id = newProject.id;
   projectTitle.addEventListener('click', () => {
     changeActiveProject(newProject)
   })
@@ -15,8 +21,19 @@ export default function addProject() {
 }
 
 function changeActiveProject(activeProject) {
-  const title = document.getElementById('project-title-h');
-
-  title.textContent = activeProject.name;
+  activatedProject = activeProject;
+  title.textContent = activatedProject.name;
 }
 
+function updateProjectDetails() {
+  const projectTitle = document.getElementById(activatedProject.id);
+  projectTitle.textContent = activatedProject.name;
+  title.textContent = activatedProject.name;
+}
+
+function applyRename() {
+  const renameInput = document.getElementById('change-name-input');
+  activatedProject.setName(renameInput.value);
+}
+
+export { addProject, updateProjectDetails, applyRename }

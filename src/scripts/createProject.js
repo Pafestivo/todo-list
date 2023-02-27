@@ -4,15 +4,17 @@ export default function Project(name) {
 
   const id = crypto.randomUUID()
   let todos = [];
+  this.name = name;
   return {
-    get name() {
-      return name;
-    },
+    name,
     get id() {
       return id;
     },
     getTodos() {
       return todos;
+    },
+    setName(newName) {
+      this.name = newName
     },
     getTodo(todoId) {
       for(let i = todos.length; i >= 0; i--) {
