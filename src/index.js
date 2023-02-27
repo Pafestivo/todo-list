@@ -2,7 +2,7 @@ import './styles/header.css';
 import './styles/main.css';
 import './styles/sidebar.css';
 import './styles/styles.css';
-import Project from './scripts/createProject';
+import './styles/popup.css';
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm } from './scripts/switchForms';
 import addProject from './scripts/addProject';
 

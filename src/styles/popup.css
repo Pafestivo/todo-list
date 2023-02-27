@@ -1,0 +1,68 @@
+.popup-overlay {
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+form input,
+form textarea,
+form select {
+  font-family: 'Roboto', 'serif';
+}
+
+#add-task-overlay form {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  height: max-content; 
+  width: 500px;
+  padding-bottom: 40px;
+  background-color: white;
+}
+
+#add-task {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 20px 60px;
+}
+
+#add-task h1 {
+  align-self: center;
+  font-size: 40px;
+}
+
+#add-task label {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+input,
+select {
+  font-size: 20px;
+  line-height: 30px;
+  padding: 2px 3px;
+}
+
+#add-task textarea {
+  font-size: 16px;
+  resize: none;
+  padding: 2px 3px;
+}
+
+#add-task input[type=submit] {
+  margin-top: 10px;
+  background-color: var(--sidebar);
+  border: 1px solid var(--header);
+  cursor: pointer;
+}
+
+#add-task input[type=submit]:hover {
+  background-color: var(--header);
+  border: 1px solid var(--sidebar);
+  color: white;
+}
