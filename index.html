@@ -80,5 +80,36 @@
     </div> <!--/project-actions-->
 
   </div> <!--/main-->
+
+  <div id="add-task-overlay" class="popup-overlay hidden">
+    <form action="" id="add-task">
+      <h1>Add Task</h1>
+     <label>
+      Title:
+      <input type="text" maxlength="20">
+     </label>
+
+     <label>
+      Description:
+      <textarea rows ="5" cols ="60" maxlength="100"></textarea>
+     </label>
+
+     <label>
+      Due-Date:
+      <input type="date">
+     </label>
+
+     <label>
+      Urgency:
+      <select id="cars" name="cars">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+     </label>
+
+     <input type="submit" value="Add Task">
+    </form>
+  </div> <!--/add-task-overlay-->
 </body>
 </html>
