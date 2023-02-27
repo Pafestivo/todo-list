@@ -2,6 +2,7 @@ const newProject = document.getElementById('new-project');
 const projectForm = document.getElementById('project-form');
 const renameForm = document.getElementById('change-project-name');
 const title = document.getElementById('project-title-h');
+const AddTaskOverlay = document.getElementById('add-task-overlay');
 
 function openAddProjectForm() {
   newProject.classList.add('hidden');
@@ -23,4 +24,12 @@ function closeRenameForm() {
   title.classList.remove('hidden')
 }
 
-export { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm }
+function openAddTaskForm() {
+  AddTaskOverlay.classList.remove('hidden')
+}
+
+function closeAddTaskForm() {
+  AddTaskOverlay.classList.add('hidden')
+}
+
+export { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm }

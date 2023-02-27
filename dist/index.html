@@ -75,14 +75,15 @@
     </div> <!--/task-div-->
 
     <div id="project-actions">
-      <i class="btn fa-solid fa-plus new-task"></i>
+      <i id="add-task-btn" class="btn fa-solid fa-plus new-task"></i>
       <i id ="delete-project" class="btn edit fa-solid fa-trash"></i>
     </div> <!--/project-actions-->
 
   </div> <!--/main-->
 
   <div id="add-task-overlay" class="popup-overlay hidden">
-    <form action="" id="add-task">
+    <form action="" id="add-task-form">
+      <p id="close-form">X</p>
       <h1>Add Task</h1>
      <label>
       Title:
@@ -96,7 +97,7 @@
 
      <label>
       Due-Date:
-      <input type="date">
+      <input id="due-date" type="date">
      </label>
 
      <label>
@@ -108,7 +109,7 @@
       </select>
      </label>
 
-     <input type="submit" value="Add Task">
+     <input id="submit-task" type="submit" value="Add Task">
     </form>
   </div> <!--/add-task-overlay-->
 </body>

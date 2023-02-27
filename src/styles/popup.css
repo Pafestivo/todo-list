@@ -22,19 +22,33 @@ form select {
   background-color: white;
 }
 
-#add-task {
+#add-task-form {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
   padding: 20px 60px;
 }
 
-#add-task h1 {
+#add-task-form #close-form {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color:rgb(204, 89, 89);
+  width: max-content;
+  height: max-content;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#add-task-form h1 {
   align-self: center;
   font-size: 40px;
 }
 
-#add-task label {
+#add-task-form label {
   font-size: 20px;
   display: flex;
   flex-direction: column;
@@ -48,20 +62,20 @@ select {
   padding: 2px 3px;
 }
 
-#add-task textarea {
+#add-task-form textarea {
   font-size: 16px;
   resize: none;
   padding: 2px 3px;
 }
 
-#add-task input[type=submit] {
+#add-task-form input[type=submit] {
   margin-top: 10px;
   background-color: var(--sidebar);
   border: 1px solid var(--header);
   cursor: pointer;
 }
 
-#add-task input[type=submit]:hover {
+#add-task-form input[type=submit]:hover {
   background-color: var(--header);
   border: 1px solid var(--sidebar);
   color: white;

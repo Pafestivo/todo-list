@@ -3,15 +3,19 @@ import './styles/main.css';
 import './styles/sidebar.css';
 import './styles/styles.css';
 import './styles/popup.css';
-import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm } from './scripts/switchForms';
+import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm } from './scripts/switchForms';
 import addProject from './scripts/addProject';
 
-const newProject = document.getElementById('new-project'); // new project button in sidebar
-const submitProject = document.getElementById('submit-project'); // submit project button in sidebar
-const newProjectInput = document.getElementById('new-project-input'); // the input of adding new project
-const title = document.getElementById('project-title-h'); // project title in the main area
-const saveName = document.getElementById('save-name'); // the submit rename form
-const renameInput = document.getElementById('change-name-input'); // the rename form input
+const newProject = document.getElementById('new-project');
+const submitProject = document.getElementById('submit-project');
+const newProjectInput = document.getElementById('new-project-input');
+const title = document.getElementById('project-title-h');
+const saveName = document.getElementById('save-name');
+const renameInput = document.getElementById('change-name-input');
+const addTaskBtn = document.getElementById('add-task-btn');
+const closeTaskForm = document.getElementById('close-form');
+const submitTask = document.getElementById('submit-task');
+const taskDateField = document.getElementById('due-date');
 
 
 newProject.addEventListener('click', () => {
@@ -42,4 +46,13 @@ title.addEventListener('click', () => {
 saveName.addEventListener('click', (e) => {
   e.preventDefault();
   closeRenameForm();
+})
+addTaskBtn.addEventListener('click', () => {
+  taskDateField.value = "";
+  openAddTaskForm();
+});
+closeTaskForm.addEventListener('click', closeAddTaskForm);
+submitTask.addEventListener('click', (e) => {
+  e.preventDefault();
+  closeAddTaskForm();
 })
