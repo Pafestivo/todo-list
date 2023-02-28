@@ -12,7 +12,6 @@ const taskDescription = document.getElementById('task-description');
 const taskDateField = document.getElementById('due-date');
 const taskUrgency = document.getElementById('urgency');
 
-
 function openAddProjectForm() {
   newProject.classList.add('hidden');
   projectForm.classList.remove('hidden');

@@ -17,7 +17,7 @@ export default function Project(name) {
       this.name = newName
     },
     getTodo(todoId) {
-      for(let i = todos.length; i >= 0; i--) {
+      for(let i = todos.length - 1; i >= 0; i--) {
         if(todos[i].id === todoId) {
           return todos[i];
         } 

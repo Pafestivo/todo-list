@@ -8,6 +8,10 @@ const title = document.getElementById('project-title-h');
 const addTaskBtn = document.getElementById('add-task-btn');
 const deleteFormBtn = document.getElementById('delete-project');
 const todosContainer = document.getElementById('todos-container');
+const AddTaskOverlay = document.getElementById('add-task-overlay');
+const taskFormH1 = document.getElementById('task-form-h1');
+const taskIdHolder = document.getElementById('taskID');
+const submitTask = document.getElementById('submit-task');
 
 function addProject() {
   const newProjectInput = document.getElementById('new-project-input');
@@ -66,15 +70,30 @@ function addTodo() {
   const taskUrgency = document.getElementById('urgency');
   const taskDateField = document.getElementById('due-date');
 
-  if(taskTitle.value !== "" &&
-  taskDescription.value !== "" && 
-  taskDateField.value !== "") // if no field is empty
-  {
-    // create todo for the current project
-    activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
-    refreshToDos();
-  } else alert("Form wasn't filled properly - No task was added");
+  if 
+    (taskTitle.value !== "" &&
+    taskDescription.value !== "" && 
+    taskDateField.value !== ""
+    ) // if no field is empty
+      {
+        if(AddTaskOverlay.id === "editTodo") { // we're editing a todo
+          taskFormH1.textContent = "Add Task";
+          AddTaskOverlay.id = "add-task-overlay";
+          submitTask.value = "Add Task";
+          const selectedTask = activatedProject.getTodo(taskIdHolder.id);
+          selectedTask.setName(taskTitle.value);
+          selectedTask.setDescription(taskDescription.value);
+          selectedTask.setDueDate(taskDateField.value);
+          selectedTask.setPriority(taskUrgency.value)
+          refreshToDos();
+        } else if (AddTaskOverlay.id === "add-task-overlay") { // we're adding a todo
+          // create todo for the current project
+          activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
+          refreshToDos();
+          }
+      } else alert("Form wasn't filled properly - No action was taken"); // if inputs are empty 
 }
+
 
 function deleteTodo(id) {
   activatedProject.removeTodo(id);
@@ -88,6 +107,24 @@ function refreshToDos() {
     const todoContainer = document.createElement('div');
     todoContainer.classList.add('task-div', `${todo.priority.toLowerCase()}-urg`);
     todoContainer.id = todo.id;
+    todoContainer.addEventListener('click', (e) => {
+      if(!e.target.classList.contains('btn')) {
+        const taskTitle = document.getElementById('task-title');
+        const taskDescription = document.getElementById('task-description');
+        const taskDateField = document.getElementById('due-date');
+        const taskUrgency = document.getElementById('urgency');
+
+        AddTaskOverlay.classList.remove('hidden');
+        AddTaskOverlay.id = 'editTodo';
+        taskIdHolder.id = todo.id;
+        taskFormH1.textContent = 'Edit Task';
+        submitTask.value = 'Save Changes!';
+        taskTitle.value = todo.name;
+        taskDescription.value = todo.description;
+        taskDateField.value = todo.dueDate;
+        taskUrgency.value = todo.priority;
+      } 
+    });
 
     const taskName = document.createElement('div');
     taskName.classList.add('task-name');
@@ -108,19 +145,14 @@ function refreshToDos() {
     const priority = document.createElement('p');
     priority.classList.add('priority');
     priority.textContent = todo.priority;
-
-    const todoActions = document.createElement('div');
-    const editBtn = document.createElement('i');
+;
     const deleteBtn = document.createElement('i');
-    todoActions.classList.add('task-actions');
-    editBtn.classList.add('btn', 'fa-regular', 'fa-pen-to-square');
     deleteBtn.classList.add('btn', 'fa-solid', 'fa-trash');
     deleteBtn.addEventListener('click', () => {
       deleteTodo(todo.id);
     })
-    todoActions.append(editBtn, deleteBtn);
 
-    todoContainer.append(taskName, dueDate, priority, todoActions);
+    todoContainer.append(taskName, dueDate, priority, deleteBtn);
     todosContainer.appendChild(todoContainer);
   });
 }
