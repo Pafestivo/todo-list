@@ -1,7 +1,6 @@
 export default function Todo(name, description, priority, dueDate) {
 
   const id = crypto.randomUUID();
-  let done = false;
   this.name = name;
   this.description = description;
   this.dueDate = dueDate;
@@ -25,12 +24,6 @@ export default function Todo(name, description, priority, dueDate) {
     },
     setPriority(newPrio) {
       this.priority = newPrio;
-    },
-    get isDone() {
-      return done;
-    },
-    set toggleDone(value) {
-      this.done = value
-    },
+    }
   }
 }

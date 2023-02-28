@@ -91,6 +91,10 @@
   cursor: pointer;
 }
 
+.fa-circle-check {
+  color: var(--header);
+}
+
 .task-name {
   display: flex;
   column-gap: 10px;

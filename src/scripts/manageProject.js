@@ -132,10 +132,22 @@ function refreshToDos() {
     const emptyCircle = document.createElement('i');
     const checkedCircle = document.createElement('i');
     const todoTitle = document.createElement('p');
+
     emptyCircle.classList.add('btn', 'fa-regular', 'fa-circle');
-    checkedCircle.classList.add('btn', 'fa-regular', 'fa-circle', 'hidden');
+    checkedCircle.classList.add('btn', 'fa-solid', 'fa-circle-check', 'hidden');
     todoTitle.classList.add('task-title');
+
     todoTitle.textContent = todo.name;
+
+    emptyCircle.addEventListener('click', () => {
+      emptyCircle.classList.add('hidden');
+      checkedCircle.classList.remove('hidden');
+    })
+    checkedCircle.addEventListener('click', () => {
+      emptyCircle.classList.remove('hidden');
+      checkedCircle.classList.add('hidden');
+    })
+
     taskName.append(emptyCircle, checkedCircle, todoTitle);
 
     const dueDate = document.createElement('p');
