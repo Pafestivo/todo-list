@@ -7,7 +7,7 @@ let activatedProject = {name: 'No Project Selected', id: 'Default ID'}
 const title = document.getElementById('project-title-h');
 const addTaskBtn = document.getElementById('add-task-btn');
 const deleteFormBtn = document.getElementById('delete-project');
-
+const todosContainer = document.getElementById('todos-container');
 
 function addProject() {
   const newProjectInput = document.getElementById('new-project-input');
@@ -45,6 +45,7 @@ function deleteProject() {
   activatedProjectTitle.remove();
   activatedProject = {name: 'No Project Selected'};
   updateProjectDetails();
+  todosContainer.textContent = "";
   deleteFormBtn.classList.add('hidden');
   addTaskBtn.classList.add('hidden');
 }
@@ -57,7 +58,7 @@ function applyRename() {
   }
 }
 
-// todos
+// TODOS
 
 function addTodo() {
   const taskTitle = document.getElementById('task-title');
@@ -81,7 +82,6 @@ function deleteTodo(id) {
 }
 
 function refreshToDos() {
-  const todosContainer = document.getElementById('todos-container');
   todosContainer.textContent = "";
 
   activatedProject.getTodos().forEach(todo => {
