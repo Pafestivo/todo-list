@@ -1,7 +1,7 @@
 import Project from "./createProject";
+import { defaultProject } from "./defaultProject";
 
-let activatedProject = {name: 'No Project Selected', id: 'Default ID'}
-
+let activatedProject = defaultProject;
 
 
 const title = document.getElementById('project-title-h');
@@ -45,17 +45,21 @@ function updateProjectDetails() {
 }
 
 function deleteProject() {
-  const activatedProjectTitle = document.getElementById(activatedProject.id);
-  activatedProjectTitle.remove();
-  activatedProject = {name: 'No Project Selected'};
-  updateProjectDetails();
-  todosContainer.textContent = "";
-  deleteFormBtn.classList.add('hidden');
-  addTaskBtn.classList.add('hidden');
+  if(activatedProject.name === 'Click the title to rename!') {
+    alert("It's usually advised to read the instructions, rather than deleting them...");
+  } else {
+    const activatedProjectTitle = document.getElementById(activatedProject.id);
+    if(activatedProjectTitle) activatedProjectTitle.remove();
+    activatedProject = {name: 'No Project Selected', id: 'no-project'};
+    updateProjectDetails();
+    todosContainer.textContent = "";
+    deleteFormBtn.classList.add('hidden');
+    addTaskBtn.classList.add('hidden');
+  }
 }
 
 function applyRename() {
-  if(activatedProject.id !== 'Default ID') {
+  if(activatedProject.id !== 'no-project') {
     const renameInput = document.getElementById('change-name-input');
     activatedProject.setName(renameInput.value);
     return true;
@@ -96,8 +100,12 @@ function addTodo() {
 
 
 function deleteTodo(id) {
-  activatedProject.removeTodo(id);
-  refreshToDos();
+  if(activatedProject.name === 'Click the title to rename!') {
+    alert("It's usually advised to read the instructions, rather than deleting them...");
+  } else {
+    activatedProject.removeTodo(id);
+    refreshToDos();
+  }
 }
 
 function refreshToDos() {
@@ -169,4 +177,4 @@ function refreshToDos() {
   });
 }
 
-export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo }
+export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos }

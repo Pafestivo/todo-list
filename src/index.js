@@ -4,7 +4,7 @@ import './styles/sidebar.css';
 import './styles/styles.css';
 import './styles/popup.css';
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm } from './scripts/switchForms';
-import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo } from './scripts/manageProject';
+import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos } from './scripts/manageProject';
 
 const newProject = document.getElementById('new-project');
 const submitProject = document.getElementById('submit-project');
@@ -19,6 +19,7 @@ const deleteFormBtn = document.getElementById('delete-project');
 
 // load the default project first
 updateProjectDetails();
+refreshToDos();
 
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {

@@ -63,6 +63,7 @@
   padding: 12px 20px;
   margin: 10px 100px;
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(4, 1fr);
   border-radius: 10px;
 }
@@ -97,6 +98,7 @@
 
 .task-name {
   display: flex;
+  align-items: center;
   column-gap: 10px;
 }
 
