@@ -18,7 +18,6 @@ function openAddProjectForm() {
   newProject.classList.add('hidden');
   projectForm.classList.remove('hidden');
   newProjectInput.value = "";
-  newProjectInput.focus();
 }
 
 function closeAddProjectForm() {

@@ -46,7 +46,10 @@ document.addEventListener('click', (e) => { // click outside of sidebar on mobil
     sideBar.classList.add('opacity-hidden');
   }
 })
-
+window.onresize = () => {
+  if(window.innerWidth < 1000) sideBar.classList.add('opacity-hidden')
+  else sideBar.classList.remove('opacity-hidden');
+}
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
