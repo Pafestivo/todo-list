@@ -34,24 +34,25 @@ function addProjectToSidebar(newProject) {
   projectTitle.addEventListener('click', () => {
     transitionScreen.classList.remove('opacity-hidden');
     changeActiveProject(newProject);
-    deleteFormBtn.classList.remove('hidden');
-    addTaskBtn.classList.remove('hidden');
-    restoreProjectBtn.classList.add('hidden');
     setTimeout(() => {
       transitionScreen.classList.add('opacity-hidden')
+      deleteFormBtn.classList.remove('hidden');
+      addTaskBtn.classList.remove('hidden');
+      restoreProjectBtn.classList.add('hidden');
+      const activatedProjectTitle = document.getElementById(activatedProject.id);
+      if(activatedProjectTitle.parentElement === recycleBin) {
+        restoreProjectBtn.classList.remove('hidden');
+        addTaskBtn.classList.add('hidden');
+      }
     }, 200);
-    const activatedProjectTitle = document.getElementById(activatedProject.id);
-    if(activatedProjectTitle.parentElement === recycleBin) {
-      restoreProjectBtn.classList.remove('hidden');
-      addTaskBtn.classList.add('hidden');
-    }
+
   })
   projectList.appendChild(projectTitle);
 }
 
 function changeActiveProject(activeProject) {
+  activatedProject = activeProject;
   setTimeout(() => {
-    activatedProject = activeProject;
     title.textContent = activatedProject.name;
     refreshToDos();
   }, 200);
