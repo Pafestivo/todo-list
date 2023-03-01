@@ -189,11 +189,11 @@ function refreshToDos() {
     taskName.append(emptyCircle, checkedCircle, todoTitle);
 
     const dueDate = document.createElement('p');
-    dueDate.classList.add('due-date');
+    dueDate.classList.add('due-date', 'mobile-hidden');
     dueDate.textContent = todo.dueDate.split("-").reverse().join("-");// reverse the date string
 
     const priority = document.createElement('p');
-    priority.classList.add('priority');
+    priority.classList.add('priority', 'mobile-hidden');
     priority.textContent = todo.priority;
 ;
     const deleteBtn = document.createElement('i');

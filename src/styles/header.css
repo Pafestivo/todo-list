@@ -12,3 +12,9 @@
 #header h1 {
   font-size: 50px;
 }
+
+#header .fa-bars {
+  font-size: 45px;
+  margin-right: 20px;
+  cursor: pointer;
+}

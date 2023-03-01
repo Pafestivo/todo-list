@@ -24,6 +24,9 @@ const cancelDeletion = document.getElementById('no');
 const recycleBinTitle = document.getElementById('recycle-bin-title');
 const recycleBin = document.getElementById('recycle-bin');
 const restoreProjectBtn = document.getElementById('restore-project');
+const openMobileSidebar = document.getElementById('open-mobile-sidebar');
+const closeMobileSidebar = document.getElementById('close-mobile-sidebar')
+const sideBar = document.getElementById('side-bar')
 
 // load the default project first
 addProjectToSidebar(defaultProject);
@@ -38,6 +41,15 @@ document.addEventListener('keydown', (e) => { // shortcut escape to close forms
     closeVerifyDeletionForm();
   }
 })
+document.addEventListener('click', (e) => { // click outside of sidebar on mobile hides the sidebar
+  if(window.innerWidth < 1000 && !e.target.closest('#side-bar') && e.target !== openMobileSidebar) {
+    sideBar.classList.add('hidden');
+  }
+})
+window.onresize = () => {
+  if(window.innerWidth < 1000) sideBar.classList.add('hidden')
+  else sideBar.classList.remove('hidden');
+}
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
@@ -86,3 +98,11 @@ recycleBinTitle.addEventListener('click', () => {
   }
 })
 restoreProjectBtn.addEventListener('click', restoreProject);
+openMobileSidebar.addEventListener('click', toggleMobileSidebar);
+closeMobileSidebar.addEventListener('click', toggleMobileSidebar);
+
+function toggleMobileSidebar() {
+  if(sideBar.classList.contains('hidden')) {
+    sideBar.classList.remove('hidden');
+  } else sideBar.classList.add('hidden');
+}

@@ -5,13 +5,26 @@
   row-gap: 8px;
   grid-area: 2 / 1 / 3 / 2;
   background-color: var(--sidebar);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#sidebar-header {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  padding-left: 15px;
 }
 
 #side-bar h1 {
   margin: 10px 0;
   text-align: center;
   font-size: 40px;
+}
+
+#side-bar .fa-x {
+  font-size: 40px;
+  cursor: pointer;
 }
 
 #side-bar h2,
