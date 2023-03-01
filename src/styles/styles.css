@@ -28,7 +28,7 @@ body {
 }
 
 .mobile-only {
-  display: none;
+  display: none !important;
 }
 
 /* roboto-regular - latin */
