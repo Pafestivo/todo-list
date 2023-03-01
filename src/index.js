@@ -3,7 +3,7 @@ import './styles/main.css';
 import './styles/sidebar.css';
 import './styles/styles.css';
 import './styles/popup.css';
-import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm } from './scripts/switchForms';
+import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm, openVerifyDeletionForm, closeVerifyDeletionForm } from './scripts/switchForms';
 import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable} from './scripts/manageProject';
 
 const newProject = document.getElementById('new-project');
@@ -16,6 +16,8 @@ const addTaskBtn = document.getElementById('add-task-btn');
 const closeTaskForm = document.getElementById('close-form');
 const submitTask = document.getElementById('submit-task');
 const deleteFormBtn = document.getElementById('delete-project');
+const verifyDeletion = document.getElementById('yes');
+const cancelDeletion = document.getElementById('no');
 
 // load the default project first
 updateProjectDetails();
@@ -55,4 +57,9 @@ submitTask.addEventListener('click', (e) => {
   addTodo();
   closeAddTaskForm();
 })
-deleteFormBtn.addEventListener('click', deleteProject)
+deleteFormBtn.addEventListener('click', openVerifyDeletionForm)
+verifyDeletion.addEventListener('click', () => {
+  deleteProject();
+  closeVerifyDeletionForm();
+});
+cancelDeletion.addEventListener('click', closeVerifyDeletionForm)

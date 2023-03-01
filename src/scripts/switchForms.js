@@ -3,6 +3,8 @@ const projectForm = document.getElementById('project-form');
 const renameForm = document.getElementById('change-project-name');
 const title = document.getElementById('project-title-h');
 const AddTaskOverlay = document.getElementById('add-task-overlay');
+const verifyDeletionOverlay = document.getElementById('verify-deletion-overlay');
+
 
 // input fields
 const newProjectInput = document.getElementById('new-project-input');
@@ -55,4 +57,12 @@ function closeAddTaskForm() {
   AddTaskOverlay.classList.add('hidden')
 }
 
-export { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm }
+function openVerifyDeletionForm() {
+  verifyDeletionOverlay.classList.remove('hidden');
+}
+
+function closeVerifyDeletionForm() {
+  verifyDeletionOverlay.classList.add('hidden');
+}
+
+export { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm, openVerifyDeletionForm, closeVerifyDeletionForm }

@@ -121,7 +121,7 @@ function refreshToDos() {
     todoContainer.classList.add('task-div', `${todo.priority.toLowerCase()}-urg`);
     todoContainer.id = todo.id;
     todoContainer.addEventListener('click', (e) => {
-      if(!e.target.classList.contains('btn')) {
+      if(!e.target.classList.contains('btn')) { // if todo clicked, open edit page
         const taskTitle = document.getElementById('task-title');
         const taskDescription = document.getElementById('task-description');
         const taskDateField = document.getElementById('due-date');
