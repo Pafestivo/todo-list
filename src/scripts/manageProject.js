@@ -81,9 +81,6 @@ function addTodo() {
     ) // if no field is empty
       {
         if(AddTaskOverlay.id === "editTodo") { // we're editing a todo
-          taskFormH1.textContent = "Add Task";
-          AddTaskOverlay.id = "add-task-overlay";
-          submitTask.value = "Add Task";
           const selectedTask = activatedProject.getTodo(taskIdHolder.id);
           selectedTask.setName(taskTitle.value);
           selectedTask.setDescription(taskDescription.value);

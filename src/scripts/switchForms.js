@@ -45,6 +45,13 @@ function openAddTaskForm() {
 }
 
 function closeAddTaskForm() {
+  const taskFormH1 = document.getElementById('task-form-h1');
+  const submitTask = document.getElementById('submit-task');
+  // reset form back to default 'add task'
+  taskFormH1.textContent = "Add Task";
+  AddTaskOverlay.id = "add-task-overlay";
+  submitTask.value = "Add Task";
+  // hide the form
   AddTaskOverlay.classList.add('hidden')
 }
 
