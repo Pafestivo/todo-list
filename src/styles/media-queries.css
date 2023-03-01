@@ -14,6 +14,11 @@
     display: block !important;
   }
 
+  .first-load-hide {
+    visibility: hidden;
+    opacity: 0;
+  }
+
   .mobile-hidden {
     display: none;
   }
