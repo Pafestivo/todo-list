@@ -4,7 +4,7 @@ import './styles/sidebar.css';
 import './styles/styles.css';
 import './styles/popup.css';
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm } from './scripts/switchForms';
-import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos } from './scripts/manageProject';
+import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable} from './scripts/manageProject';
 
 const newProject = document.getElementById('new-project');
 const submitProject = document.getElementById('submit-project');
@@ -38,7 +38,7 @@ submitProject.addEventListener('click', (e) => {
   addProject();
 });
 title.addEventListener('click', () => {
-  if(applyRename()) { // if project allow rename
+  if(isRenameAvailable()) { // if project allow rename
     openRenameForm();
   }
 });

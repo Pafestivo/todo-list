@@ -29,7 +29,7 @@ function addProject() {
       addTaskBtn.classList.remove('hidden')
     })
   projectList.appendChild(projectTitle);
-  } else alert("Empty projects can't be added.")
+  } else alert("Empty projects can't be added");
   
 }
 
@@ -64,9 +64,13 @@ function deleteProject() {
 function applyRename() {
   if(activatedProject.id !== 'no-project') {
     const renameInput = document.getElementById('change-name-input');
-    activatedProject.setName(renameInput.value);
-    return true;
+    if(renameInput.value !== "") activatedProject.setName(renameInput.value);
+    else alert("Project name can't be empty");
   }
+}
+
+function isRenameAvailable() {
+  if(activatedProject.id !== 'no-project') return true;
 }
 
 // TODOS
@@ -178,4 +182,4 @@ function refreshToDos() {
   });
 }
 
-export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos }
+export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos, isRenameAvailable }
