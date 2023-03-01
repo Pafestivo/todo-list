@@ -95,6 +95,7 @@ function restoreProject() {
   projectList.appendChild(activatedProjectTitle);
   recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
   restoreProjectBtn.classList.add('hidden');
+  addTaskBtn.classList.remove('hidden');
 }
 
 
@@ -133,12 +134,8 @@ function addTodo() {
 
 
 function deleteTodo(id) {
-  if(activatedProject.name === 'Click the title to rename!') {
-    alert("It's usually advised to read the instructions, rather than deleting them...");
-  } else {
-    activatedProject.removeTodo(id);
-    refreshToDos();
-  }
+  activatedProject.removeTodo(id);
+  refreshToDos();
 }
 
 function refreshToDos() {
