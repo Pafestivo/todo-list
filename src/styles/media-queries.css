@@ -24,6 +24,7 @@
     position: fixed;
     min-height: 100vh;
     padding-right: 30px;
+    transition: all 0.2s ease-in-out;
   }
 
   /* add project form */
@@ -90,5 +91,15 @@
     width: 400px;
     padding-bottom: 40px;
     background-color: white;
+  }
+
+  .transition-screen {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 1);
+    transition: all 0.2s ease-in-out;
   }
 }

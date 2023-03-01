@@ -16,6 +16,7 @@ const recycleBin = document.getElementById('recycle-bin');
 const restoreProjectBtn = document.getElementById('restore-project');
 const projectList = document.getElementById('projects-list');
 const recycleCount = document.getElementById('recycle-count');
+const transitionScreen = document.getElementById('transition-screen');
 
 function addProject() {
   const projectName = newProjectInput.value;
@@ -31,10 +32,14 @@ function addProjectToSidebar(newProject) {
   projectTitle.textContent = newProject.name;
   projectTitle.id = newProject.id; // give the sidebar title same id as the project
   projectTitle.addEventListener('click', () => {
+    transitionScreen.classList.remove('opacity-hidden');
     changeActiveProject(newProject);
     deleteFormBtn.classList.remove('hidden');
     addTaskBtn.classList.remove('hidden');
     restoreProjectBtn.classList.add('hidden');
+    setTimeout(() => {
+      transitionScreen.classList.add('opacity-hidden')
+    }, 200);
     const activatedProjectTitle = document.getElementById(activatedProject.id);
     if(activatedProjectTitle.parentElement === recycleBin) {
       restoreProjectBtn.classList.remove('hidden');
@@ -45,9 +50,11 @@ function addProjectToSidebar(newProject) {
 }
 
 function changeActiveProject(activeProject) {
-  activatedProject = activeProject;
-  title.textContent = activatedProject.name;
-  refreshToDos();
+  setTimeout(() => {
+    activatedProject = activeProject;
+    title.textContent = activatedProject.name;
+    refreshToDos();
+  }, 200);
 }
 
 function updateProjectDetails() {
@@ -152,7 +159,7 @@ function refreshToDos() {
         const taskDateField = document.getElementById('due-date');
         const taskUrgency = document.getElementById('urgency');
 
-        AddTaskOverlay.classList.remove('hidden');
+        AddTaskOverlay.classList.remove('opacity-hidden');
         AddTaskOverlay.id = 'editTodo';
         taskIdHolder.id = todo.id;
         taskFormH1.textContent = 'Edit Task';

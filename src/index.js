@@ -43,12 +43,12 @@ document.addEventListener('keydown', (e) => { // shortcut escape to close forms
 })
 document.addEventListener('click', (e) => { // click outside of sidebar on mobile hides the sidebar
   if(window.innerWidth < 1000 && !e.target.closest('#side-bar') && e.target !== openMobileSidebar) {
-    sideBar.classList.add('hidden');
+    sideBar.classList.add('opacity-hidden');
   }
 })
 window.onresize = () => {
-  if(window.innerWidth < 1000) sideBar.classList.add('hidden')
-  else sideBar.classList.remove('hidden');
+  if(window.innerWidth < 1000) sideBar.classList.add('opacity-hidden')
+  else sideBar.classList.remove('opacity-hidden');
 }
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
@@ -101,8 +101,9 @@ restoreProjectBtn.addEventListener('click', restoreProject);
 openMobileSidebar.addEventListener('click', toggleMobileSidebar);
 closeMobileSidebar.addEventListener('click', toggleMobileSidebar);
 
+
 function toggleMobileSidebar() {
-  if(sideBar.classList.contains('hidden')) {
-    sideBar.classList.remove('hidden');
-  } else sideBar.classList.add('hidden');
+  if(sideBar.classList.contains('opacity-hidden')) {
+    sideBar.classList.remove('opacity-hidden');
+  } else sideBar.classList.add('opacity-hidden');
 }

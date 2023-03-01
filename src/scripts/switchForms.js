@@ -39,7 +39,7 @@ function closeRenameForm() {
 }
 
 function openAddTaskForm() {
-  AddTaskOverlay.classList.remove('hidden')
+  AddTaskOverlay.classList.remove('opacity-hidden')
   taskTitle.value = "";
   taskDescription.value = "";
   taskDateField.value = "";
@@ -54,15 +54,15 @@ function closeAddTaskForm() {
   AddTaskOverlay.id = "add-task-overlay";
   submitTask.value = "Add Task";
   // hide the form
-  AddTaskOverlay.classList.add('hidden')
+  AddTaskOverlay.classList.add('opacity-hidden')
 }
 
 function openVerifyDeletionForm() {
-  verifyDeletionOverlay.classList.remove('hidden');
+  verifyDeletionOverlay.classList.remove('opacity-hidden');
 }
 
 function closeVerifyDeletionForm() {
-  verifyDeletionOverlay.classList.add('hidden');
+  verifyDeletionOverlay.classList.add('opacity-hidden');
 }
 
 export { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm, openVerifyDeletionForm, closeVerifyDeletionForm }
