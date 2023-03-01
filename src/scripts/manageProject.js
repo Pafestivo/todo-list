@@ -124,7 +124,7 @@ function addTodo() {
     } else if (AddTaskOverlay.id === "add-task-overlay") { // we're adding a todo
       // create todo for the current project
       if(taskDateField.value === "") {
-        activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, 'no DueDate')
+        activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, 'No DueDate')
       } else activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
       refreshToDos();
       }

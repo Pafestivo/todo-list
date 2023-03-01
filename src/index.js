@@ -30,6 +30,14 @@ addProjectToSidebar(defaultProject);
 updateProjectDetails();
 refreshToDos();
 
+document.addEventListener('keydown', (e) => { // shortcut escape to close forms
+  if(e.key === 'Escape') {
+    closeAddProjectForm();
+    closeAddTaskForm();
+    closeRenameForm();
+    closeVerifyDeletionForm();
+  }
+})
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
