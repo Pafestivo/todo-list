@@ -41,11 +41,12 @@ document.addEventListener('keydown', (e) => { // shortcut escape to close forms
     closeVerifyDeletionForm();
   }
 })
+document.addEventListener('click', (e) => { // click outside of sidebar on mobile hides the sidebar
+  if(window.innerWidth < 1000 && (e.target.closest('#main') || e.target.closest('#header')) && e.target !== openMobileSidebar) {
+    sideBar.classList.add('opacity-hidden');
+  }
+})
 
-window.onresize = () => {
-  if(window.innerWidth < 1000) sideBar.classList.add('opacity-hidden')
-  else sideBar.classList.remove('opacity-hidden');
-}
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
