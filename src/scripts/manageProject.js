@@ -74,25 +74,26 @@ function addTodo() {
   const taskUrgency = document.getElementById('urgency');
   const taskDateField = document.getElementById('due-date');
 
-  if 
-    (taskTitle.value !== "" &&
-    taskDescription.value !== "" && 
-    taskDateField.value !== ""
-    ) // if no field is empty
-      {
-        if(AddTaskOverlay.id === "editTodo") { // we're editing a todo
-          const selectedTask = activatedProject.getTodo(taskIdHolder.id);
-          selectedTask.setName(taskTitle.value);
-          selectedTask.setDescription(taskDescription.value);
-          selectedTask.setDueDate(taskDateField.value);
-          selectedTask.setPriority(taskUrgency.value)
-          refreshToDos();
-        } else if (AddTaskOverlay.id === "add-task-overlay") { // we're adding a todo
-          // create todo for the current project
-          activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
-          refreshToDos();
-          }
-      } else alert("Form wasn't filled properly - No action was taken"); // if inputs are empty 
+  if (taskTitle.value !== "" && taskDescription.value !== "" ) {// if no field is empty    
+
+    if(AddTaskOverlay.id === "editTodo") { // we're editing a todo
+      const selectedTask = activatedProject.getTodo(taskIdHolder.id);
+      selectedTask.setName(taskTitle.value);
+      selectedTask.setDescription(taskDescription.value);
+      selectedTask.setPriority(taskUrgency.value);
+      if(taskDateField.value !== "") {
+        selectedTask.setDueDate(taskDateField.value);
+      } else selectedTask.setDueDate('No DueDate');
+      refreshToDos();
+
+    } else if (AddTaskOverlay.id === "add-task-overlay") { // we're adding a todo
+      // create todo for the current project
+      if(taskDateField.value === "") {
+        activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, 'no DueDate')
+      } else activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
+      refreshToDos();
+      }
+  } else alert("Form wasn't filled properly - No action was taken"); // if inputs are empty 
 }
 
 
