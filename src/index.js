@@ -42,7 +42,7 @@ document.addEventListener('keydown', (e) => { // shortcut escape to close forms
   }
 })
 document.addEventListener('click', (e) => { // click outside of sidebar on mobile hides the sidebar
-  if(window.innerWidth < 1000 && e.target.closest('#main')) {
+  if(window.innerWidth < 1000 && (e.target.closest('#main') || e.target.closest('#header')) && e.target !== openMobileSidebar) {
     sideBar.classList.add('opacity-hidden');
   }
 })

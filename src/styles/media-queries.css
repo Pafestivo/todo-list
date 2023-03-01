@@ -46,8 +46,8 @@
   }
   
   #project-header h1 {
-    font-size: 40px;
-    padding-bottom: 10px;
+    font-size: 30px;
+    padding-bottom: 0;
   }
 
   .task-div {
