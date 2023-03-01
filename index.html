@@ -9,6 +9,12 @@
   <title>To-Do List</title>
 </head>
 <body>
+<!-- transition screen -->
+  <div id="transition-screen" class="transition-screen opacity-hidden">
+
+  </div>
+<!-- /// -->
+
   <div id="header">
     <i id="open-mobile-sidebar" class="fa-solid fa-bars mobile-only"></i>
     <h1>To-Do List</h1>
@@ -53,7 +59,7 @@
     </div> <!--/project-actions-->
   </div> <!--/main-->
 
-  <div id="verify-deletion-overlay" class="popup-overlay hidden">
+  <div id="verify-deletion-overlay" class="popup-overlay opacity-hidden">
     <div id="verify-deletion">
       <p>Are you sure you want to delete?</p>
       <div id="yes-or-no">
@@ -64,7 +70,7 @@
   </div><!--verify-deletion-overlay-->
   
 
-  <div id="add-task-overlay" class="popup-overlay hidden">
+  <div id="add-task-overlay" class="popup-overlay opacity-hidden">
     <form action="" id="add-task-form">
       <p id="close-form">X</p>
       <i id="taskID" class="hidden">used to get the task ID when editing.</i>
