@@ -4,7 +4,8 @@ import './styles/sidebar.css';
 import './styles/styles.css';
 import './styles/popup.css';
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm, openVerifyDeletionForm, closeVerifyDeletionForm } from './scripts/switchForms';
-import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable} from './scripts/manageProject';
+import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable, addProjectToSidebar, restoreProject} from './scripts/manageProject';
+import { defaultProject } from './scripts/defaultProject';
 
 const newProject = document.getElementById('new-project');
 const submitProject = document.getElementById('submit-project');
@@ -18,8 +19,12 @@ const submitTask = document.getElementById('submit-task');
 const deleteFormBtn = document.getElementById('delete-project');
 const verifyDeletion = document.getElementById('yes');
 const cancelDeletion = document.getElementById('no');
+const recycleBinTitle = document.getElementById('recycle-bin-title');
+const recycleBin = document.getElementById('recycle-bin');
+const restoreProjectBtn = document.getElementById('restore-project');
 
 // load the default project first
+addProjectToSidebar(defaultProject);
 updateProjectDetails();
 refreshToDos();
 
@@ -63,3 +68,11 @@ verifyDeletion.addEventListener('click', () => {
   closeVerifyDeletionForm();
 });
 cancelDeletion.addEventListener('click', closeVerifyDeletionForm)
+recycleBinTitle.addEventListener('click', () => {
+  if(recycleBin.classList.contains('hidden')) {
+    recycleBin.classList.remove('hidden');
+  } else {
+    recycleBin.classList.add('hidden');
+  }
+})
+restoreProjectBtn.addEventListener('click', restoreProject);

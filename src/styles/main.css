@@ -148,3 +148,17 @@
   color: rgb(204, 89, 89);
   transform: rotate(360deg);
 }
+
+#project-actions p {
+  background-color: var(--header);
+  color: white;
+  padding: 6px 11px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;;
+}
+
+#project-actions p:hover {
+  cursor: pointer;
+  color: var(--header);
+  background-color: var(--sidebar);
+}

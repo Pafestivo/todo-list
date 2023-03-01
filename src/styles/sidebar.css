@@ -84,3 +84,7 @@
 #side-bar form input[type=submit]:hover {
   transform: rotate(180deg);
 }
+
+#recycle-bin-title {
+  user-select: none;
+}

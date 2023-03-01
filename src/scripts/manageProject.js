@@ -3,7 +3,6 @@ import { defaultProject } from "./defaultProject";
 
 let activatedProject = defaultProject;
 
-
 const title = document.getElementById('project-title-h');
 const addTaskBtn = document.getElementById('add-task-btn');
 const deleteFormBtn = document.getElementById('delete-project');
@@ -12,25 +11,37 @@ const AddTaskOverlay = document.getElementById('add-task-overlay');
 const taskFormH1 = document.getElementById('task-form-h1');
 const taskIdHolder = document.getElementById('taskID');
 const submitTask = document.getElementById('submit-task');
+const newProjectInput = document.getElementById('new-project-input');
+const recycleBin = document.getElementById('recycle-bin');
+const restoreProjectBtn = document.getElementById('restore-project');
+const projectList = document.getElementById('projects-list');
+const recycleCount = document.getElementById('recycle-count');
 
 function addProject() {
-  const newProjectInput = document.getElementById('new-project-input');
-  const projectList = document.getElementById('projects-list');
   const projectName = newProjectInput.value;
 
   if(newProjectInput.value !== "") {
     const newProject = new Project(projectName);
-    const projectTitle = document.createElement('h2');
-    projectTitle.textContent = newProject.name;
-    projectTitle.id = newProject.id;
-    projectTitle.addEventListener('click', () => {
-      changeActiveProject(newProject)
-      deleteFormBtn.classList.remove('hidden')
-      addTaskBtn.classList.remove('hidden')
-    })
-  projectList.appendChild(projectTitle);
+    addProjectToSidebar(newProject)
   } else alert("Empty projects can't be added");
-  
+}
+
+function addProjectToSidebar(newProject) {
+  const projectTitle = document.createElement('h2');
+  projectTitle.textContent = newProject.name;
+  projectTitle.id = newProject.id; // give the sidebar title same id as the project
+  projectTitle.addEventListener('click', () => {
+    changeActiveProject(newProject);
+    deleteFormBtn.classList.remove('hidden');
+    addTaskBtn.classList.remove('hidden');
+    restoreProjectBtn.classList.add('hidden');
+    const activatedProjectTitle = document.getElementById(activatedProject.id);
+    if(activatedProjectTitle.parentElement === recycleBin) {
+      restoreProjectBtn.classList.remove('hidden');
+      addTaskBtn.classList.add('hidden');
+    }
+  })
+  projectList.appendChild(projectTitle);
 }
 
 function changeActiveProject(activeProject) {
@@ -40,25 +51,30 @@ function changeActiveProject(activeProject) {
 }
 
 function updateProjectDetails() {
-  const activatedProjectTitle = document.getElementById(activatedProject.id);
-  if (activatedProjectTitle) {
+  const activatedProjectTitle = document.getElementById(activatedProject.id); // the title of the activated project in sidebar
+  if (activatedProjectTitle) {// if it has a sidebar title
     activatedProjectTitle.textContent = activatedProject.name;
   }
-  title.textContent = activatedProject.name;
+  title.textContent = activatedProject.name; // the title in the main area
 }
 
 function deleteProject() {
-  if(activatedProject.name === 'Click the title to rename!') {
-    alert("It's usually advised to read the instructions, rather than deleting them...");
-  } else {
-    const activatedProjectTitle = document.getElementById(activatedProject.id);
-    if(activatedProjectTitle) activatedProjectTitle.remove();
-    activatedProject = {name: 'No Project Selected', id: 'no-project'};
-    updateProjectDetails();
-    todosContainer.textContent = "";
-    deleteFormBtn.classList.add('hidden');
-    addTaskBtn.classList.add('hidden');
+  const activatedProjectTitle = document.getElementById(activatedProject.id);
+
+  if(activatedProjectTitle.parentElement === recycleBin) { // if it's already in recycle bin
+    activatedProjectTitle.remove(); // remove completely
+    recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
   }
+  else {
+    recycleBin.appendChild(activatedProjectTitle); // move to recycle bin
+    recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
+  }
+  activatedProject = {name: 'No Project Selected', id: 'no-project'}; // set active project to no project
+  updateProjectDetails();
+  todosContainer.textContent = ""; // reset todos
+  deleteFormBtn.classList.add('hidden');
+  addTaskBtn.classList.add('hidden');
+  restoreProjectBtn.classList.add('hidden');
 }
 
 function applyRename() {
@@ -72,6 +88,20 @@ function applyRename() {
 function isRenameAvailable() {
   if(activatedProject.id !== 'no-project') return true;
 }
+
+function restoreProject() {
+  const activatedProjectTitle = document.getElementById(activatedProject.id);
+
+  projectList.appendChild(activatedProjectTitle);
+  recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
+  restoreProjectBtn.classList.add('hidden');
+}
+
+
+
+
+
+
 
 // TODOS
 
@@ -182,4 +212,4 @@ function refreshToDos() {
   });
 }
 
-export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos, isRenameAvailable }
+export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos, isRenameAvailable, addProjectToSidebar, restoreProject }
