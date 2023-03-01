@@ -14,6 +14,12 @@ defaultProject.addTodo(
   'Low', 
   '2027-5-27');
 
+  defaultProject.addTodo(
+    'Task colors changes depends on the urgency', 
+    'Green is low urgency, yellow is medium and red is high!', 
+    'Low', 
+    '2027-5-27');
+
 defaultProject.addTodo(
   'Use the + icon to add new tasks', 
   'Adding a task will only add it to the project you currently viewing.', 
