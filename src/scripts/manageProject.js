@@ -18,16 +18,19 @@ function addProject() {
   const projectList = document.getElementById('projects-list');
   const projectName = newProjectInput.value;
 
-  const newProject = new Project(projectName);
-  const projectTitle = document.createElement('h2');
-  projectTitle.textContent = newProject.name;
-  projectTitle.id = newProject.id;
-  projectTitle.addEventListener('click', () => {
-    changeActiveProject(newProject)
-    deleteFormBtn.classList.remove('hidden')
-    addTaskBtn.classList.remove('hidden')
-  })
+  if(newProjectInput.value !== "") {
+    const newProject = new Project(projectName);
+    const projectTitle = document.createElement('h2');
+    projectTitle.textContent = newProject.name;
+    projectTitle.id = newProject.id;
+    projectTitle.addEventListener('click', () => {
+      changeActiveProject(newProject)
+      deleteFormBtn.classList.remove('hidden')
+      addTaskBtn.classList.remove('hidden')
+    })
   projectList.appendChild(projectTitle);
+  } else alert("Empty projects can't be added.")
+  
 }
 
 function changeActiveProject(activeProject) {
