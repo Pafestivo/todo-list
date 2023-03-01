@@ -101,8 +101,6 @@ function restoreProject() {
 
 
 
-
-
 // TODOS
 
 function addTodo() {

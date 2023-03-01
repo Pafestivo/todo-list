@@ -59,7 +59,7 @@
 /* Tasks  */
 
 .task-div {
-  border: 1px solid var(--green);
+  border: 1px solid var(--header);
   padding: 12px 20px;
   margin: 10px 100px;
   display: grid;

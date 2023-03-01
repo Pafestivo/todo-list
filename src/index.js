@@ -3,6 +3,8 @@ import './styles/main.css';
 import './styles/sidebar.css';
 import './styles/styles.css';
 import './styles/popup.css';
+import './styles/media-queries.css';
+
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm, openVerifyDeletionForm, closeVerifyDeletionForm } from './scripts/switchForms';
 import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable, addProjectToSidebar, restoreProject} from './scripts/manageProject';
 import { defaultProject } from './scripts/defaultProject';
