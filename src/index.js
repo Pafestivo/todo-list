@@ -44,11 +44,7 @@ document.addEventListener('keydown', (e) => { // shortcut escape to close forms
 
 newProject.addEventListener('click', openAddProjectForm);
 
-renameInput.addEventListener('focusout', () => {
-  setTimeout(() => {
-    closeRenameForm();
-  }, 150);
-});
+
 submitProject.addEventListener('click', (e) => {
   e.preventDefault();
   closeAddProjectForm();
