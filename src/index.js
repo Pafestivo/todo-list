@@ -42,6 +42,10 @@ document.addEventListener('keydown', (e) => { // shortcut escape to close forms
   }
 })
 
+window.onresize = () => { // automatically hide or show sidebar on resizing
+  if(window.innerWidth < 1000) sideBar.classList.add('opacity-hidden')
+  else sideBar.classList.remove('opacity-hidden');
+}
 newProject.addEventListener('click', openAddProjectForm);
 newProjectInput.addEventListener('focusout', () => {
   setTimeout(() => {
