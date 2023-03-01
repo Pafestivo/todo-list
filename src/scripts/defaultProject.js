@@ -50,5 +50,11 @@ defaultProject.addTodo(
   'Low', 
   '2027-5-9');
 
+defaultProject.addTodo(
+  'Deleted projects will be sent to recycle bin', 
+  'You can either restore them from recycle bin or delete them forever.', 
+  'Medium', 
+  '2027-5-17');
+
 
 export { defaultProject }
