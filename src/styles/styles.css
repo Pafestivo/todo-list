@@ -27,11 +27,6 @@ body {
   opacity: 0;
 }
 
-.first-load-hide {
-  visibility: hidden;
-  opacity: 0;
-}
-
 .mobile-only {
   display: none;
 }

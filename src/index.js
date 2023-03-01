@@ -99,7 +99,7 @@ closeMobileSidebar.addEventListener('click', toggleMobileSidebar);
 
 
 function toggleMobileSidebar() {
-  if(sideBar.classList.contains('opacity-hidden')) {
+  if(sideBar.classList.contains('opacity-hidden') || sideBar.classList.contains('first-load-hide')) {
     sideBar.classList.remove('opacity-hidden');
     sideBar.classList.remove('first-load-hide');
   } else sideBar.classList.add('opacity-hidden');
