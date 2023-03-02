@@ -10,6 +10,9 @@ export default function Project(name) {
     get id() {
       return id;
     },
+    get todos() {
+      return todos;
+    },
     getTodos() {
       return todos;
     },

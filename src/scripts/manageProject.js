@@ -1,6 +1,9 @@
 import Project from "./createProject";
 import { defaultProject } from "./defaultProject";
 
+let projects = [];
+let trashProjects = [];
+
 let activatedProject = defaultProject;
 
 const title = document.getElementById('project-title-h');
@@ -11,19 +14,18 @@ const AddTaskOverlay = document.getElementById('add-task-overlay');
 const taskFormH1 = document.getElementById('task-form-h1');
 const taskIdHolder = document.getElementById('taskID');
 const submitTask = document.getElementById('submit-task');
-const newProjectInput = document.getElementById('new-project-input');
 const recycleBin = document.getElementById('recycle-bin');
 const restoreProjectBtn = document.getElementById('restore-project');
 const projectList = document.getElementById('projects-list');
 const recycleCount = document.getElementById('recycle-count');
 const transitionScreen = document.getElementById('transition-screen');
 
-function addProject() {
-  const projectName = newProjectInput.value;
-
-  if(newProjectInput.value !== "") {
+function addProject(projectName) {
+  if(projectName !== "") {
     const newProject = new Project(projectName);
     addProjectToSidebar(newProject)
+    projects.push(newProject);
+    localStorage.setItem('projects', JSON.stringify(projects))
   } else alert("Empty projects can't be added");
 }
 
@@ -45,7 +47,6 @@ function addProjectToSidebar(newProject) {
         addTaskBtn.classList.add('hidden');
       }
     }, 200);
-
   })
   projectList.appendChild(projectTitle);
 }
@@ -72,10 +73,21 @@ function deleteProject() {
   if(activatedProjectTitle.parentElement === recycleBin) { // if it's already in recycle bin
     activatedProjectTitle.remove(); // remove completely
     recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
+    const activatedProjectIndex = trashProjects.map(item => item.id).indexOf(activatedProject.id);
+    trashProjects.splice(activatedProjectIndex, 1);
+    localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
   }
   else {
     recycleBin.appendChild(activatedProjectTitle); // move to recycle bin
     recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
+    const activatedProjectIndex = projects.map(item => item.id).indexOf(activatedProject.id);
+    console.log(activatedProjectIndex);
+    projects.splice(activatedProjectIndex, 1);
+    console.log(projects)
+    trashProjects.push(activatedProject);
+    localStorage.setItem('projects', JSON.stringify(projects))
+    localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
+
   }
   activatedProject = {name: 'No Project Selected', id: 'no-project'}; // set active project to no project
   updateProjectDetails();
@@ -88,7 +100,10 @@ function deleteProject() {
 function applyRename() {
   if(activatedProject.id !== 'no-project') {
     const renameInput = document.getElementById('change-name-input');
-    if(renameInput.value !== "") activatedProject.setName(renameInput.value);
+    if(renameInput.value !== "") {
+      activatedProject.setName(renameInput.value);
+      localStorage.setItem('projects', JSON.stringify(projects))
+    }
     else alert("Project name can't be empty");
   }
 }
@@ -104,6 +119,11 @@ function restoreProject() {
   recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
   restoreProjectBtn.classList.add('hidden');
   addTaskBtn.classList.remove('hidden');
+  const activatedProjectIndex = trashProjects.map(item => item.id).indexOf(activatedProject.id);
+  trashProjects.splice(activatedProjectIndex, 1);
+  projects.push(activatedProject);
+  localStorage.setItem('projects', JSON.stringify(projects))
+  localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
 }
 
 
@@ -128,6 +148,8 @@ function addTodo() {
       if(taskDateField.value !== "") {
         selectedTask.setDueDate(taskDateField.value);
       } else selectedTask.setDueDate('No DueDate');
+      localStorage.setItem('projects', JSON.stringify(projects));
+      localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
       refreshToDos();
 
     } else if (AddTaskOverlay.id === "add-task-overlay") { // we're adding a todo
@@ -135,6 +157,7 @@ function addTodo() {
       if(taskDateField.value === "") {
         activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, 'No DueDate')
       } else activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
+      localStorage.setItem('projects', JSON.stringify(projects));
       refreshToDos();
       }
   } else alert("Form wasn't filled properly - No action was taken"); // if inputs are empty 
@@ -144,6 +167,8 @@ function addTodo() {
 function deleteTodo(id) {
   activatedProject.removeTodo(id);
   refreshToDos();
+  localStorage.setItem('projects', JSON.stringify(projects))
+  localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
 }
 
 function refreshToDos() {
@@ -215,4 +240,4 @@ function refreshToDos() {
   });
 }
 
-export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos, isRenameAvailable, addProjectToSidebar, restoreProject }
+export { addProject, updateProjectDetails, deleteProject, applyRename, addTodo, refreshToDos, isRenameAvailable, addProjectToSidebar, restoreProject, projects, trashProjects }

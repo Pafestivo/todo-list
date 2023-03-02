@@ -6,8 +6,8 @@ import './styles/popup.css';
 import './styles/media-queries.css';
 
 import { openAddProjectForm, closeAddProjectForm, openRenameForm, closeRenameForm, openAddTaskForm, closeAddTaskForm, openVerifyDeletionForm, closeVerifyDeletionForm } from './scripts/switchForms';
-import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable, addProjectToSidebar, restoreProject} from './scripts/manageProject';
-import { defaultProject } from './scripts/defaultProject';
+import { addProject, applyRename, updateProjectDetails, deleteProject, addTodo, refreshToDos, isRenameAvailable, restoreProject } from './scripts/manageProject';
+import { loadLocalStorage } from './scripts/localStorage';
 
 const newProject = document.getElementById('new-project');
 const submitProject = document.getElementById('submit-project');
@@ -28,10 +28,7 @@ const openMobileSidebar = document.getElementById('open-mobile-sidebar');
 const closeMobileSidebar = document.getElementById('close-mobile-sidebar')
 const sideBar = document.getElementById('side-bar')
 
-// load the default project first
-addProjectToSidebar(defaultProject);
-updateProjectDetails();
-refreshToDos();
+pageLoad();
 
 document.addEventListener('keydown', (e) => { // shortcut escape to close forms
   if(e.key === 'Escape') {
@@ -63,7 +60,7 @@ renameInput.addEventListener('focusout', () => {
 submitProject.addEventListener('click', (e) => {
   e.preventDefault();
   closeAddProjectForm();
-  addProject();
+  addProject(newProjectInput.value);
 });
 title.addEventListener('click', () => {
   if(isRenameAvailable()) { // if project allow rename
@@ -106,4 +103,13 @@ function toggleMobileSidebar() {
     sideBar.classList.remove('opacity-hidden');
     sideBar.classList.remove('first-load-hide');
   } else sideBar.classList.add('opacity-hidden');
+}
+
+function pageLoad() {
+  if(localStorage.length !== 0) {
+    loadLocalStorage();
+  } else {
+    updateProjectDetails();
+    refreshToDos();
+  }
 }
