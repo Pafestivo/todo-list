@@ -118,7 +118,7 @@ function addTodo() {
   const taskUrgency = document.getElementById('urgency');
   const taskDateField = document.getElementById('due-date');
 
-  if (taskTitle.value !== "" && taskDescription.value !== "" ) {// if no field is empty    
+  if (taskTitle.value !== "") {// if no field is empty    
 
     if(AddTaskOverlay.id === "editTodo") { // we're editing a todo
       const selectedTask = activatedProject.getTodo(taskIdHolder.id);
