@@ -81,9 +81,7 @@ function deleteProject() {
     recycleBin.appendChild(activatedProjectTitle); // move to recycle bin
     recycleCount.textContent = recycleBin.childElementCount; // update the recycle counter
     const activatedProjectIndex = projects.map(item => item.id).indexOf(activatedProject.id);
-    console.log(activatedProjectIndex);
     projects.splice(activatedProjectIndex, 1);
-    console.log(projects)
     trashProjects.push(activatedProject);
     localStorage.setItem('projects', JSON.stringify(projects))
     localStorage.setItem('trashProjects', JSON.stringify(trashProjects))

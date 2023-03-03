@@ -39,6 +39,9 @@ function loadLocalStorage() {
         }
       }
     }
+    // making sure on page load that localStorage data stays updated
+    localStorage.setItem('projects', JSON.stringify(projects))
+    localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
 }
 
 export { loadLocalStorage }
