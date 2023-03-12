@@ -136,29 +136,53 @@ function addTodo() {
   const taskUrgency = document.getElementById('urgency');
   const taskDateField = document.getElementById('due-date');
 
-  if (taskTitle.value !== "") {// if no field is empty    
+  if (taskTitle.value !== "") {// if the task has title   
 
-    if(AddTaskOverlay.id === "editTodo") { // we're editing a todo
+    // if we're editing a todo
+    if(AddTaskOverlay.id === "editTodo") { 
       const selectedTask = activatedProject.getTodo(taskIdHolder.id);
+      // change all the todo info
       selectedTask.setName(taskTitle.value);
       selectedTask.setDescription(taskDescription.value);
       selectedTask.setPriority(taskUrgency.value);
-      if(taskDateField.value !== "") {
-        selectedTask.setDueDate(taskDateField.value);
-      } else selectedTask.setDueDate('No DueDate');
+      if(taskDateField.value === "") { // if date is empty
+        selectedTask.setDueDate('No DueDate');
+      } else if (new Date(taskDateField.value) < new Date().setHours(0, 0, 0, 0)) { // if the date is in the past
+        alert("Can't set dueDate to the past.")
+      } else {
+        const date = new Date(taskDateField.value)
+        const formattedDate = `${date.toLocaleString('default', { month: 'short'})} ${date.getDate()}, ${date.getFullYear()}`
+        selectedTask.setDueDate(formattedDate);
+      }
+
+      // update local storage and refresh the display
       localStorage.setItem('projects', JSON.stringify(projects));
       localStorage.setItem('trashProjects', JSON.stringify(trashProjects))
       refreshToDos();
 
-    } else if (AddTaskOverlay.id === "add-task-overlay") { // we're adding a todo
-      // create todo for the current project
+      // else if we're adding a todo
+    } else if (AddTaskOverlay.id === "add-task-overlay") { 
+
+      // if todo date is empty, set date to no-dueDate
       if(taskDateField.value === "") {
         activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, 'No DueDate')
-      } else activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, taskDateField.value)
+
+        // if the date is in the past, alert and abort
+      } else if(new Date(taskDateField.value) < new Date().setHours(0, 0, 0, 0)) { 
+        alert("Can't set dueDate to the past.")
+
+        // if date field passed the previous checks, format it and create
+      } else {
+        const date = new Date(taskDateField.value)
+        const formattedDate = `${date.toLocaleString('default', { month: 'short'})} ${date.getDate()}, ${date.getFullYear()}`
+        activatedProject.addTodo(taskTitle.value, taskDescription.value, taskUrgency.value, formattedDate)
+      }
+
+      // update localStorage and refresh display
       localStorage.setItem('projects', JSON.stringify(projects));
       refreshToDos();
       }
-  } else alert("Form wasn't filled properly - No action was taken"); // if inputs are empty 
+  } else alert("Title is required!"); // if no title given
 }
 
 
